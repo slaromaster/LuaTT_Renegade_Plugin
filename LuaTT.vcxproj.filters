@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="General.cpp" />
+    <ClCompile Include="hooks.cpp" />
+    <ClCompile Include="Lua_Class.cpp" />
+    <ClCompile Include="LuaHooks.cpp" />
+    <ClCompile Include="LuaManager.cpp" />
+    <ClCompile Include="luatt.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="LuaFunctions.cpp" />
+    <ClCompile Include="LuaFunctionsDA.cpp" />
+    <ClCompile Include="print_cpp.cpp" />
+    <ClCompile Include="ConversationControl.cpp" />
+    <ClCompile Include="lsqlite3.c" />
+    <ClCompile Include="SlaScripts\sla.cpp">
+      <Filter>SlaScripts</Filter>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_ai.cpp">
+      <Filter>SlaScripts</Filter>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_imst.cpp">
+      <Filter>SlaScripts</Filter>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_rf.cpp">
+      <Filter>SlaScripts</Filter>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_kambot.cpp">
+      <Filter>SlaScripts</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaDialog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="General.h" />
+    <ClInclude Include="hooks.h" />
+    <ClInclude Include="Lua_Class.h" />
+    <ClInclude Include="LuaHooks.h" />
+    <ClInclude Include="LuaManager.h" />
+    <ClInclude Include="luatt.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="LuaFunctions.h" />
+    <ClInclude Include="LuaFunctionsDA.h" />
+    <ClInclude Include="LuaLib\lualib.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaLib\lapi.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaLib\lauxlib.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaLib\lfunc.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaLib\lua.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaLib\luaconf.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaLib\luajit.h">
+      <Filter>LuaLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ConversationControl.h" />
+    <ClInclude Include="lsqlite3.h" />
+    <ClInclude Include="SlaScripts\sla.h">
+      <Filter>SlaScripts</Filter>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_ai.h">
+      <Filter>SlaScripts</Filter>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_imst.h">
+      <Filter>SlaScripts</Filter>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_kambot.h">
+      <Filter>SlaScripts</Filter>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_rf.h">
+      <Filter>SlaScripts</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="LuaLib">
+      <UniqueIdentifier>{ab52f636-9bd9-40f1-80ba-fcaa45b6cd39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlaScripts">
+      <UniqueIdentifier>{e995d291-e4b4-47af-a9b3-19f27cccc5e1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

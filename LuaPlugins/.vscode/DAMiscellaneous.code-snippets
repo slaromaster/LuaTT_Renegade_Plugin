@@ -1,0 +1,22 @@
+{
+	"DA_Register_Console_Function": {
+		"prefix": "DA_Register_Console_Function",
+		"body": [
+			"local MyConsoleFunction = {}",
+			"function MyConsoleFunction(str)\n\nend",
+			"DA_Register_Console_Function(${1:\"Command\"}, ${2:\"Alias\"}, ${3:\"Help\"},${4:MyConsoleFunction})"
+		],
+		"description": "DA_Register_Console_Function"
+	},
+
+	"DA_Register_Crate": {
+		"prefix": "DA_Register_Crate",
+		"body": [
+			"local MyCrate = {}",
+			"function MyCrate:Can_Activate(playerID)\n\n\treturn true\nend",
+			"function MyCrate:Activate(playerID)\n\nend",
+			"DA_Register_Crate(${1:3}, ${2:\"MyCrate\"}, ${3:MyCrate})"
+		],
+		"description": "DA_Register_Crate"
+	}
+}

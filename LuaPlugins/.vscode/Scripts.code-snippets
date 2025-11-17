@@ -1,0 +1,104 @@
+{
+    "DestroyScript": {
+        "prefix": "DestroyScript",
+        "body": [
+          "DestroyScript(${1:ID}, ${2:Obj})"
+        ],
+        "description": "DestroyScript"
+      },
+    
+      "Get_Float_Parameter": {
+        "prefix": "Get_Float_Parameter",
+        "body": [
+          "Get_Float_Parameter(${1:ID}, ${2:Obj}, ${3:String})"
+        ],
+        "description": "Get_Float_Parameter"
+      },
+    
+      "Get_Vector3_Parameter_Wrap": {
+        "prefix": "Get_Vector3_Parameter_Wrap",
+        "body": [
+          "Get_Vector3_Parameter_Wrap(${1:ID}, ${2:Obj}, ${3:String})"
+        ],
+        "description": "Get_Vector3_Parameter_Wrap"
+      },
+      
+      "Get_Int_Parameter": {
+        "prefix": "Get_Int_Parameter",
+        "body": [
+          "Get_Int_Parameter(${1:ID}, ${2:Obj}, ${3:String})"
+        ],
+        "description": "Get_Int_Parameter"
+      },
+    
+      "Get_Bool_Parameter": {
+        "prefix": "Get_Bool_Parameter",
+        "body": [
+          "Get_Bool_Parameter(${1:ID}, ${2:Obj}, ${3:String})"
+        ],
+        "description": "Get_Bool_Parameter"
+      },
+    
+      "Get_String_Parameter": {
+        "prefix": "Get_String_Parameter",
+        "body": [
+          "Get_String_Parameter(${1:ID}, ${2:Obj}, ${3:String})"
+        ],
+        "description": "Get_String_Parameter"
+      },
+      
+      "Start_Timer": {
+        "prefix": "Start_Timer",
+        "body": [
+          "Start_Timer(${1:ID}, ${2:Obj}, ${3:number}, ${4:number})"
+        ],
+        "description": "Start_Timer"
+      },
+      
+      "Register_Script": {
+        "prefix": "Register_Script",
+        "body": [
+            "local MyScript = {}",
+            "function MyScript:Created(ID, Obj)\n\nend",
+            "function MyScript:KeyHook(ID, Obj)\n\nend",
+            "function MyScript:Destroyed(ID, Obj)\n\nend",
+            "function MyScript:Killed(ID, Obj, Killer)\n\nend",
+            "function MyScript:Damaged(ID, Obj, Shooter, Damage)\n\nend",
+            "function MyScript:Custom(ID, Obj, Message, Param, Sender)\n\nend",
+            "function MyScript:Enemy_Seen(ID, Obj, Seen)\n\nend",
+            "function MyScript:Action_Complete(ID, Obj, Action)\n\nend",
+            "function MyScript:Animation_Complete(ID, Obj, Anim)\n\nend",
+            "function MyScript:Poked(ID, Obj, Poker)\n\nend",
+            "function MyScript:Entered(ID, Obj, Enter)\n\nend",
+            "function MyScript:Exited(ID, Obj, Exiter)\n\nend",
+            "function MyScript:Timer_Expired(ID, Obj, Num)\n\nend",
+            "function MyScript:Detach(ID, Obj)\n\nend",
+            "Register_Script(${1:\"MyScript\"}, ${2:\"Param1,Param2,Param3\"}, ${3:MyScript})"
+        ],
+        "description": "Register_Script"
+      },
+    
+      "Install_Hook": {
+        "prefix": "Install_Hook",
+        "body": [
+          "Install_Hook(${1:ID}, ${2:Obj}, ${3:String})"
+        ],
+        "description": "Install_Hook"
+      },
+      
+      "Remove_Hook": {
+        "prefix": "Remove_Hook",
+        "body": [
+          "Remove_Hook(${1:ID}, ${2:Obj})"
+        ],
+        "description": "Remove_Hook"
+      },
+     
+      "Get_Script_Name": {
+        "prefix": "Get_Script_Name",
+        "body": [
+          "Get_Script_Name(${1:ID}, ${2:Obj})"
+        ],
+        "description": "Get_Script_Name"
+      }
+}

@@ -1,0 +1,193 @@
+{
+    "OnChat": {
+        "prefix": "OnChat",
+        "body": [
+            "function OnChat(${1:ID}, ${2:Type}, ${3:Message}, ${4:Target})\n\n\treturn 1\nend"
+        ],
+        "description": "OnChat"
+    }, 
+
+    "ConnectionAcceptance": {
+        "prefix": "ConnectionAcceptance",
+        "body": [
+            "function ConnectionAcceptance(${1:Name}, ${2:IP}, ${3:Serial}, ${4:Version})\n\nend"
+        ],
+        "description": "ConnectionAcceptance"
+    },
+
+    "RadioHook": {
+        "prefix": "RadioHook",
+        "body": [
+            "function RadioHook(${1:PlayerType}, ${2:PlayerID}, ${3:AnnouncementID}, ${4:IconID}, ${5:AnnouncementType})\n\n\treturn 1\nend"
+        ],
+        "description": "RadioHook"
+    },
+
+    "OnRefill": {
+        "prefix": "OnRefill",
+        "body": [
+            "function OnRefill(${1:Purchaser})\n\n\treturn 1\nend"
+        ],
+        "description": "OnRefill"
+    },  
+
+    "OnHostMessage": {
+        "prefix": "OnHostMessage",
+        "body": [
+            "function OnHostMessage(${1:ID},${2:Type},${3:Message})\n\nend"
+        ],
+        "description": "OnHostMessage"
+    },   
+
+    "OnPlayerJoin": {
+        "prefix": "OnPlayerJoin",
+        "body": [
+            "function OnPlayerJoin(${1:ID},${2:Name})\n\nend"
+        ],
+        "description": "OnPlayerJoin"
+    },  
+
+    "OnPlayerLeave": {
+        "prefix": "OnPlayerLeave",
+        "body": [
+            "function OnPlayerLeave(${1:ID})\n\nend"
+        ],
+        "description": "OnPlayerLeave"
+    },
+
+    "OnLevelLoaded": {
+        "prefix": "OnLevelLoaded",
+        "body": [
+            "function OnLevelLoaded()\n\nend"
+        ],
+        "description": "OnLevelLoaded"
+    },
+
+    "OnGameOver": {
+        "prefix": "OnGameOver",
+        "body": [
+            "function OnGameOver()\n\nend"
+        ],
+        "description": "OnGameOver"
+    },
+
+    "OnConsoleOutput": {
+        "prefix": "OnConsoleOutput",
+        "body": [
+            "function OnConsoleOutput(${1:Output})\n\nend"
+        ],
+        "description": "OnConsoleOutput"
+    },
+    
+    "OnCharacterPurchase": {
+        "prefix": "OnCharacterPurchase",
+        "body": [
+            "function OnCharacterPurchase(${1:ID}, ${2:Cost}, ${3:Preset}, ${4:Ret})\n\n\treturn -1\nend"
+        ],
+        "description": "OnCharacterPurchase"
+    },
+
+    "OnVehiclePurchase": {
+        "prefix": "OnVehiclePurchase",
+        "body": [
+            "function OnVehiclePurchase(${1:ID}, ${2:Cost}, ${3:Preset}, ${4:Ret})\n\n\treturn -1\nend"
+        ],
+        "description": "OnVehiclePurchase"
+    },
+
+    "OnPowerupPurchase": {
+        "prefix": "OnPowerupPurchase",
+        "body": [
+            "function OnPowerupPurchase(${1:ID}, ${2:Cost}, ${3:Preset}, ${4:Ret})\n\n\treturn -1\nend"
+        ],
+        "description": "OnPowerupPurchase"
+    },
+
+    "VehicleTTHook": {
+        "prefix": "VehicleTTHook",
+        "body": [
+            "function VehicleTTHook(${1:ID}, ${2:Cost}, ${3:Preset}, ${4:Ret})\n\n\treturn -1\nend"
+        ],
+        "description": "VehicleTTHook"
+    },
+
+    "StockDamageHook": {
+        "prefix": "StockDamageHook",
+        "body": [
+            "function StockDamageHook(${1:Damager}, ${2:Target}, ${3:Damage}, ${4:Warhead})\n\n\treturn 1\nend"
+        ],
+        "description": "StockDamageHook"
+    },
+
+    "TTDamageHook": {
+        "prefix": "TTDamageHook",
+        "body": [
+            "function TTDamageHook(${1:Damager}, ${2:Target}, ${3:Ammo_Name}, ${4:Warhead}, ${5:Bone}, ${6:Ammo})\n\n\treturn 1\nend"
+        ],
+        "description": "TTDamageHook"
+    },
+
+    "OnError": {
+        "prefix": "OnError",
+        "body": [
+            "function OnError(${1:Err})\n\nend"
+        ],
+        "description": "OnError"
+    },
+
+    "OnObjectCreate": {
+        "prefix": "OnObjectCreate",
+        "body": [
+            "function OnObjectCreate(${1:Obj})\n\nend"
+        ],
+        "description": "OnObjectCreate"
+    },
+
+    "OnThink": {
+        "prefix": "OnThink",
+        "body": [
+            "function OnThink()\n\nend"
+        ],
+        "description": "OnThink"
+    }, 
+
+    "OnKilled": {
+        "prefix": "OnKilled",
+        "body": [
+            "function OnKilled(${1:Obj}, ${2:Shooter})\n\nend"
+        ],
+        "description": "OnKilled"
+    },
+    
+    "OnDestroyed": {
+        "prefix": "OnDestroyed",
+        "body": [
+            "function OnDestroyed(${1:Obj})\n\nend"
+        ],
+        "description": "OnDestroyed"
+    }, 
+
+    "CustomHook": {
+        "prefix": "CustomHook",
+        "body": [
+            "function CustomHook(${1:Obj},${2:Message},${3:Param},${4:Sender})\n\nend"
+        ],
+        "description": "CustomHook"
+    }, 
+
+    "DamageHook": {
+        "prefix": "DamageHook",
+        "body": [
+            "function DamageHook(${1:Obj},${2:Damager},${3:Damage},${4:Warhead})\n\nend"
+        ],
+        "description": "DamageHook"
+    }, 
+
+    "PokedHook": {
+        "prefix": "PokedHook",
+        "body": [
+            "function PokedHook(${1:Obj},${2:Poker})\n\nend"
+        ],
+        "description": "PokedHook"
+    } 
+}

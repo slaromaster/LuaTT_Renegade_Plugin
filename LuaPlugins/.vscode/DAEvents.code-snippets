@@ -1,0 +1,450 @@
+{
+	"DA_Suicide_Event": {
+		"prefix": "DA_Suicide_Event",
+		"body": [
+		"function DA_Suicide_Event(${1:pID})\n\n\treturn true\nend"
+		],
+		"description": "DA_Suicide_Event"
+	},
+
+	"DA_Refill_Event": {
+		"prefix": "DA_Refill_Event",
+		"body": [
+		"function DA_Refill_Event(${1:pID})\n\n\treturn true\nend"
+		],
+		"description": "DA_Refill_Event"
+	},
+
+	"DA_Team_Change_Request_Event": {
+		"prefix": "DA_Team_Change_Request_Event",
+		"body": [
+		"function DA_Team_Change_Request_Event(${1:pID})\n\n\treturn true\nend"
+		],
+		"description": "DA_Team_Change_Request_Event"
+	},
+
+	"DA_Player_Pre_Join_Event": {
+		"prefix": "DA_Player_Pre_Join_Event",
+		"body": [
+		"function DA_Player_Pre_Join_Event(${1:pID},${2:Name},${3:IP},${4:Serial},${5:Version},${6:Revision},${7:Password},${8:exekey})\n\nend"
+		],
+		"description": "DA_Player_Pre_Join_Event"
+	},
+
+	"DA_Log_Event": {
+		"prefix": "DA_Log_Event",
+		"body": [
+		"function DA_Log_Event(${1:Header},${2:Output})\n\nend"
+		],
+		"description": "DA_Log_Event"
+	},
+
+	"DA_Connection_Request_Event": {
+		"prefix": "DA_Connection_Request_Event",
+		"body": [
+		"function DA_Connection_Request_Event(${1:pID},${2:Name},${3:IP},${4:Serial},${5:Version},${6:Revision},${7:Password},${8:exekey})\n\nend"
+		],
+		"description": "DA_Connection_Request_Event"
+	},
+
+	"DA_Damage_Request_Event": {
+		"prefix": "DA_Damage_Request_Event",
+		"body": [
+		"function DA_Damage_Request_Event(${1:VictimID},${2:DamagerID},${3:Damage},${4:Warhead},${5:Scale},${6:Type})\n\n\treturn true,Damage,Warhead\nend"
+		],
+		"description": "DA_Damage_Request_Event"
+	},
+
+	"DA_Chat_Command_Event": {
+		"prefix": "DA_Chat_Command_Event",
+		"body": [
+		"function DA_Chat_Command_Event(${1:pID}, ${2:Type}, ${3:Command}, ${4:Text}, ${5:Reciver})\n\n\treturn true\nend"
+		],
+		"description": "DA_Chat_Command_Event"
+	},
+
+	"DA_Chat_Event": {
+		"prefix": "DA_Chat_Event",
+		"body": [
+		"function DA_Chat_Event(${1:pID}, ${2:Type}, ${3:Message}, ${4:Reciver}, ${5:Access})\n\n\treturn true\nend"
+		],
+		"description": "DA_Chat_Event"
+	},
+
+	"DA_Key_Hook_Event": {
+		"prefix": "DA_Key_Hook_Event",
+		"body": [
+		"function DA_Key_Hook_Event(${1:pID}, ${2:Key})\n\n\treturn true\nend"
+		],
+		"description": "DA_Key_Hook_Event"
+	},
+
+	"DA_Host_Chat_Event": {
+		"prefix": "DA_Host_Chat_Event",
+		"body": [
+		"function DA_Host_Chat_Event(${1:pID}, ${2:Type}, ${3:Message})\n\n\treturn true\nend"
+		],
+		"description": "DA_Host_Chat_Event"
+	},
+
+	"DA_Radio_Event": {
+		"prefix": "DA_Radio_Event",
+		"body": [
+		"function DA_Radio_Event(${1:pID}, ${2:PlayerType}, ${3:AnnouncementID}, ${4:IconID}, ${5:AnnouncementType})\n\n\treturn true\nend"
+		],
+		"description": "DA_Radio_Event"
+	},
+
+	"DA_Player_Loaded_Event": {
+		"prefix": "DA_Player_Loaded_Event",
+		"body": [
+		"function DA_Player_Loaded_Event(${1:pID})\n\nend"
+		],
+		"description": "DA_Player_Loaded_Event"
+	},
+
+	"DA_Player_Join_Event": {
+		"prefix": "DA_Player_Join_Event",
+		"body": [
+		"function DA_Player_Join_Event(${1:pID})\n\nend"
+		],
+		"description": "DA_Player_Join_Event"
+	},
+
+	"DA_Player_Leave_Event": {
+		"prefix": "DA_Player_Leave_Event",
+		"body": [
+		"function DA_Player_Leave_Event(${1:pID})\n\nend"
+		],
+		"description": "DA_Player_Leave_Event"
+	},
+
+	"DA_Name_Change_Event": {
+		"prefix": "DA_Name_Change_Event",
+		"body": [
+		"function DA_Name_Change_Event(${1:pID})\n\nend"
+		],
+		"description": "DA_Name_Change_Event"
+	},
+
+	"DA_Remix_Event": {
+		"prefix": "DA_Remix_Event",
+		"body": [
+		"function DA_Remix_Event()\n\nend"
+		],
+		"description": "DA_Remix_Event"
+	},
+
+	"DA_Rebalance_Event": {
+		"prefix": "DA_Rebalance_Event",
+		"body": [
+		"function DA_Rebalance_Event()\n\nend"
+		],
+		"description": "DA_Rebalance_Event"
+	},
+
+	"DA_Swap_Event": {
+		"prefix": "DA_Swap_Event",
+		"body": [
+		"function DA_Swap_Event()\n\nend"
+		],
+		"description": "DA_Swap_Event"
+	},
+
+	"DA_Game_Over_Event": {
+		"prefix": "DA_Game_Over_Event",
+		"body": [
+		"function DA_Game_Over_Event()\n\nend"
+		],
+		"description": "DA_Game_Over_Event"
+	},
+
+	"DA_Level_Loaded_Event": {
+		"prefix": "DA_Level_Loaded_Event",
+		"body": [
+		"function DA_Level_Loaded_Event()\n\nend"
+		],
+		"description": "DA_Level_Loaded_Event"
+	},
+
+	"DA_Settings_Loaded_Event": {
+		"prefix": "DA_Settings_Loaded_Event",
+		"body": [
+		"function DA_Settings_Loaded_Event()\n\nend"
+		],
+		"description": "DA_Settings_Loaded_Event"
+	},
+
+	"DA_Ren_Log_Event": {
+		"prefix": "DA_Ren_Log_Event",
+		"body": [
+		"function DA_Ren_Log_Event(${1:Output})\n\nend"
+		],
+		"description": "DA_Ren_Log_Event"
+	},
+
+	"DA_Console_Output_Event": {
+		"prefix": "DA_Console_Output_Event",
+		"body": [
+		"function DA_Console_Output_Event(${1:Output})\n\nend"
+		],
+		"description": "DA_Console_Output_Event"
+	},
+
+	"DA_Character_Purchase_Request_Event": {
+		"prefix": "DA_Character_Purchase_Request_Event",
+		"body": [
+		"function DA_Character_Purchase_Request_Event(${1:Type}, ${2:pID}, ${3:Cost}, ${4:ItemID}, ${5:ItemName})\n\n\treturn true\nend"
+		],
+		"description": "DA_Character_Purchase_Request_Event"
+	},
+
+	"DA_Change_Character_Event": {
+		"prefix": "DA_Change_Character_Event",
+		"body": [
+		"function DA_Change_Character_Event(${1:pID}, ${2:SoldierID}, ${3:SoldierName})\n\nend"
+		],
+		"description": "DA_Change_Character_Event"
+	},
+
+	"DA_Character_Purchase_Event": {
+		"prefix": "DA_Character_Purchase_Event",
+		"body": [
+		"function DA_Character_Purchase_Event(${1:pID}, ${2:Cost}, ${3:ItemID}, ${4:ItemName})\n\nend"
+		],
+		"description": "DA_Character_Purchase_Event"
+	},
+
+	"DA_Vehicle_Purchase_Request_Event": {
+		"prefix": "DA_Vehicle_Purchase_Request_Event",
+		"body": [
+		"function DA_Vehicle_Purchase_Request_Event(${1:Type}, ${2:pID}, ${3:Cost}, ${4:ItemID}, ${5:ItemName})\n\n\treturn true\nend"
+		],
+		"description": "DA_Vehicle_Purchase_Request_Event"
+	},
+
+	"DA_Vehicle_Purchase_Event": {
+		"prefix": "DA_Vehicle_Purchase_Event",
+		"body": [
+		"function DA_Vehicle_Purchase_Event(${1:pID}, ${2:Cost}, ${3:ItemID}, ${4:ItemName})\n\nend"
+		],
+		"description": "DA_Vehicle_Purchase_Event"
+	},
+
+	"DA_PowerUp_Purchase_Request_Event": {
+		"prefix": "DA_PowerUp_Purchase_Request_Event",
+		"body": [
+		"function DA_PowerUp_Purchase_Request_Event(${1:Type}, ${2:pID}, ${3:Cost}, ${4:ItemID}, ${5:ItemName})\n\n\treturn true\nend"
+		],
+		"description": "DA_PowerUp_Purchase_Request_Event"
+	},
+
+	"DA_PowerUp_Purchase_Event": {
+		"prefix": "DA_PowerUp_Purchase_Event",
+		"body": [
+		"function DA_PowerUp_Purchase_Event(${1:pID}, ${2:Cost}, ${3:ItemID}, ${4:ItemName})\n\nend"
+		],
+		"description": "DA_PowerUp_Purchase_Event"
+	},
+
+	"DA_Custom_Purchase_Request_Event": {
+		"prefix": "DA_Custom_Purchase_Request_Event",
+		"body": [
+		"function DA_Custom_Purchase_Request_Event(${1:Type}, ${2:pID}, ${3:Cost}, ${4:ItemID})\n\n\treturn true\nend"
+		],
+		"description": "DA_Custom_Purchase_Request_Event"
+	},
+
+	"DA_Custom_Purchase_Event": {
+		"prefix": "DA_Custom_Purchase_Event",
+		"body": [
+		"function DA_Custom_Purchase_Event(${1:pID}, ${2:Cost}, ${3:ItemID})\n\nend"
+		],
+		"description": "DA_Custom_Purchase_Event"
+	},
+
+	"DA_Team_Change_Event": {
+		"prefix": "DA_Team_Change_Event",
+		"body": [
+		"function DA_Team_Change_Event(${1:pID})\n\nend"
+		],
+		"description": "DA_Team_Change_Event"
+	},
+
+	"DA_Vehicle_Entry_Request_Event": {
+		"prefix": "DA_Vehicle_Entry_Request_Event",
+		"body": [
+		"function DA_Vehicle_Entry_Request_Event(${1:VehicleID}, ${2:pID}, ${3:Seat})\n\n\treturn true\nend"
+		],
+		"description": "DA_Vehicle_Entry_Request_Event"
+	},
+
+	"DA_Vehicle_Enter_Event": {
+		"prefix": "DA_Vehicle_Enter_Event",
+		"body": [
+		"function DA_Vehicle_Enter_Event(${1:VehicleID}, ${2:pID}, ${3:Seat})\n\nend"
+		],
+		"description": "DA_Vehicle_Enter_Event"
+	},
+
+	"DA_Vehicle_Exit_Event": {
+		"prefix": "DA_Vehicle_Exit_Event",
+		"body": [
+		"function DA_Vehicle_Exit_Event(${1:VehicleID}, ${2:pID}, ${3:Seat})\n\nend"
+		],
+		"description": "DA_Vehicle_Exit_Event"
+	},
+
+	"DA_PowerUp_Grant_Request_Event": {
+		"prefix": "DA_PowerUp_Grant_Request_Event",
+		"body": [
+		"function DA_PowerUp_Grant_Request_Event(${1:pID}, ${2:PowerupID}, ${3:PowerupName}, ${4:PowerupObj})\n\n\treturn true\nend"
+		],
+		"description": "DA_PowerUp_Grant_Request_Event"
+	},
+
+	"DA_PowerUp_Grant_Event": {
+		"prefix": "DA_PowerUp_Grant_Event",
+		"body": [
+		"function DA_PowerUp_Grant_Event(${1:pID}, ${2:PowerupID}, ${3:PowerupName}, ${4:PowerupObj})\n\nend"
+		],
+		"description": "DA_PowerUp_Grant_Event"
+	},
+
+	"DA_Add_Weapon_Request_Event": {
+		"prefix": "DA_Add_Weapon_Request_Event",
+		"body": [
+		"function DA_Add_Weapon_Request_Event(${1:pID}, ${2:WeaponID}, ${3:WeaponName})\n\n\treturn true\nend"
+		],
+		"description": "DA_Add_Weapon_Request_Event"
+	},
+
+	"DA_Add_Weapon_Event": {
+		"prefix": "DA_Add_Weapon_Event",
+		"body": [
+		"function DA_Add_Weapon_Event(${1:pID}, ${2:WeaponID}, ${3:WeaponName})\n\nend"
+		],
+		"description": "DA_Add_Weapon_Event"
+	},
+
+	"DA_Remove_Weapon_Event": {
+		"prefix": "DA_Remove_Weapon_Event",
+		"body": [
+		"function DA_Remove_Weapon_Event(${1:pID}, ${2:WeaponID}, ${3:WeaponName})\n\nend"
+		],
+		"description": "DA_Remove_Weapon_Event"
+	},
+
+	"DA_Clear_Weapons_Event": {
+		"prefix": "DA_Clear_Weapons_Event",
+		"body": [
+		"function DA_Clear_Weapons_Event(${1:pID})\n\nend"
+		],
+		"description": "DA_Clear_Weapons_Event"
+	},
+
+	"DA_Beacon_Deploy_Event": {
+		"prefix": "DA_Beacon_Deploy_Event",
+		"body": [
+		"function DA_Beacon_Deploy_Event(${1:BeaconID})\n\nend"
+		],
+		"description": "DA_Beacon_Deploy_Event"
+	},
+
+	"DA_Beacon_Detonate_Event": {
+		"prefix": "DA_Beacon_Detonate_Event",
+		"body": [
+		"function DA_Beacon_Detonate_Event(${1:BeaconID})\n\nend"
+		],
+		"description": "DA_Beacon_Detonate_Event"
+	},
+
+	"DA_C4_Detonate_Request_Event": {
+		"prefix": "DA_C4_Detonate_Request_Event",
+		"body": [
+		"function DA_C4_Detonate_Request_Event(${1:C4ID}, ${2:TriggerID})\n\n\treturn true\nend"
+		],
+		"description": "DA_C4_Detonate_Request_Event"
+	},
+
+	"DA_C4_Detonate_Event": {
+		"prefix": "DA_C4_Detonate_Event",
+		"body": [
+		"function DA_C4_Detonate_Event(${1:C4ID})\n\nend"
+		],
+		"description": "DA_C4_Detonate_Event"
+	},
+
+	"DA_Vehicle_Flip_Event": {
+		"prefix": "DA_Vehicle_Flip_Event",
+		"body": [
+		"function DA_Vehicle_Flip_Event(${1:VehicleID})\n\n\treturn true\nend"
+		],
+		"description": "DA_Vehicle_Flip_Event"
+	},
+
+	"DA_Request_Vehicle_Event": {
+		"prefix": "DA_Request_Vehicle_Event",
+		"body": [
+		"function DA_Request_Vehicle_Event(${1:FactoryID}, ${2:VehicleID}, ${3:pID}, ${4:Delay})\n\n\treturn true\nend"
+		],
+		"description": "DA_Request_Vehicle_Event"
+	},
+
+	"DA_Kill_Event": {
+		"prefix": "DA_Kill_Event",
+		"body": [
+		"function DA_Kill_Event(${1:VictimID},${2:KillerID},${3:Damage},${4:Warhead},${5:Scale},${6:Type})\n\nend"
+		],
+		"description": "DA_Kill_Event"
+	},
+
+	"DA_Custom_Event": {
+		"prefix": "DA_Custom_Event",
+		"body": [
+		"function DA_Custom_Event(${1:pID},${2:Type},${3:Param},${4:SenderID})\n\nend"
+		],
+		"description": "DA_Custom_Event"
+	},
+
+	"DA_Poke_Event": {
+		"prefix": "DA_Poke_Event",
+		"body": [
+		"function DA_Poke_Event(${1:pID},${2:ObjectID})\n\nend"
+		],
+		"description": "DA_Poke_Event"
+	},
+
+	"DA_Zone_Enter_Event": {
+		"prefix": "DA_Zone_Enter_Event",
+		"body": [
+		"function DA_Zone_Enter_Event(${1:ObjectID},${2:EntererID})\n\nend"
+		],
+		"description": "DA_Zone_Enter_Event"
+	},
+
+	"DA_Zone_Exit_Event": {
+		"prefix": "DA_Zone_Exit_Event",
+		"body": [
+		"function DA_Zone_Exit_Event(${1:ObjectID},${2:ExiterID})\n\nend"
+		],
+		"description": "DA_Zone_Exit_Event"
+	},
+
+	"DA_Object_Created_Event": {
+		"prefix": "DA_Object_Created_Event",
+		"body": [
+		"function DA_Object_Created_Event(${1:ObjectID})\n\nend"
+		],
+		"description": "DA_Object_Created_Event"
+	},
+
+	"DA_Object_Destroyed_Event": {
+		"prefix": "DA_Object_Destroyed_Event",
+		"body": [
+		"function DA_Object_Destroyed_Event(${1:ObjectID})\n\nend"
+		],
+		"description": "DA_Object_Destroyed_Event"
+	}
+  
+}

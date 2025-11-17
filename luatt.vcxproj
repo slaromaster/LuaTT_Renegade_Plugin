@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug SSGM|Win32">
+      <Configuration>Debug SSGM</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DA|Win32">
+      <Configuration>Release DA</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release SlaServDA|Win32">
+      <Configuration>Release SlaServDA</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release SSGM|Win32">
+      <Configuration>Release SSGM</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConversationControl.cpp" />
+    <ClCompile Include="General.cpp" />
+    <ClCompile Include="hooks.cpp" />
+    <ClCompile Include="lsqlite3.c" />
+    <ClCompile Include="LuaDialog.cpp" />
+    <ClCompile Include="LuaFunctions.cpp" />
+    <ClCompile Include="LuaFunctionsDA.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="LuaHooks.cpp" />
+    <ClCompile Include="LuaManager.cpp" />
+    <ClCompile Include="LuaThread.cpp" />
+    <ClCompile Include="luatt.cpp" />
+    <ClCompile Include="Lua_Class.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="print_cpp.cpp" />
+    <ClCompile Include="SlaScripts\sla.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_ai.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_imst.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_kambot.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SlaScripts\sla_rf.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConversationControl.h" />
+    <ClInclude Include="General.h" />
+    <ClInclude Include="hooks.h" />
+    <ClInclude Include="lsqlite3.h" />
+    <ClInclude Include="LuaDialog.h" />
+    <ClInclude Include="LuaFunctions.h" />
+    <ClInclude Include="LuaFunctionsDA.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="LuaHooks.h" />
+    <ClInclude Include="LuaLib\lapi.h" />
+    <ClInclude Include="LuaLib\lauxlib.h" />
+    <ClInclude Include="LuaLib\lfunc.h" />
+    <ClInclude Include="LuaLib\lua.h" />
+    <ClInclude Include="LuaLib\luaconf.h" />
+    <ClInclude Include="LuaLib\luajit.h" />
+    <ClInclude Include="LuaLib\lualib.h" />
+    <ClInclude Include="LuaManager.h" />
+    <ClInclude Include="LuaThread.h" />
+    <ClInclude Include="luatt.h" />
+    <ClInclude Include="Lua_Class.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="SlaScripts\sla.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_ai.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_imst.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_kambot.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SlaScripts\sla_rf.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BB829477-3757-4894-BF1F-B30CE96AF3E1}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>luatt</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\MemoryManager\compiler_workarounds\MemoryManager_VS2010_Workaround.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'">D:\RenegadeStuff\westwood\MutCoop</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'">$(SolutionDir)\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">true</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'">
+    <TargetName>SlaServ</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug SSGM|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;..\MemoryManager;..\shaders\dep\dxsdk_nov07\include\;..\scripts;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SSGMPLUGIN;_CRT_SECURE_NO_DEPRECATE;WIN32;_DEBUG;_WINDOWS;_USRDLL;LUATT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>General.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).$(Configuration).pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>memorymanager.lib;shaders.lib;scripts.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <BaseAddress>0x11000000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>..\bin\debug SSGM;..\bin\debug</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if defined RenPath (
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenPath%\$(TargetFileName)" "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+if defined RenServerPath (
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenServerPath%\$(TargetFileName)" "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+verify &gt;NUL
+
+if defined RenPath (
+copy "$(TargetPath)" "%RenPath%\$(TargetFileName)"
+)
+if defined RenServerPath (
+copy "$(TargetPath)" "%RenServerPath%\$(TargetFileName)"
+)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release SSGM|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>.;..\MemoryManager;..\shaders\dep\dxsdk_nov07\include\;..\scripts;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SSGMPLUGIN;_CRT_SECURE_NO_DEPRECATE;WIN32;NDEBUG;_WINDOWS;_USRDLL;LUATT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>General.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).$(Configuration).pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>memorymanager.lib;shared.lib;scripts.lib;ws2_32.lib;Shlwapi.lib;LuaLib\Lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <MapExports>false</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <SetChecksum>true</SetChecksum>
+      <BaseAddress>0x11000000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>..\bin\release SSGM;..\bin\release</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if defined RenPath (
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenPath%\$(TargetFileName)" "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+if defined RenServerPath (
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenServerPath%\$(TargetFileName)" "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+verify &gt;NUL
+
+if defined RenPath (
+copy "$(TargetPath)" "%RenPath%\$(TargetFileName)"
+)
+if defined RenServerPath (
+copy "$(TargetPath)" "%RenServerPath%\$(TargetFileName)"
+)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DA|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>.;..\MemoryManager;..\shaders\dep\dxsdk_nov07\include\;..\scripts;LuaLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DAPLUGIN;_CRT_SECURE_NO_DEPRECATE;WIN32;NDEBUG;_WINDOWS;_USRDLL;LUATT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>General.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).$(Configuration).pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <WarningLevel>Level2</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>memorymanager.lib;shared.lib;scripts.lib;ws2_32.lib;Shlwapi.lib;lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <MapExports>false</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <SetChecksum>true</SetChecksum>
+      <BaseAddress>0x11000000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>..\bin\release SSGM;..\bin\release</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if defined RenPath (
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenPath%\$(TargetFileName)" "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+if defined RenServerPath (
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenServerPath%\$(TargetFileName)" "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+verify &gt;NUL
+
+if defined RenPath (
+copy "$(TargetPath)" "%RenPath%\$(TargetFileName)"
+)
+if defined RenServerPath (
+copy "$(TargetPath)" "%RenServerPath%\$(TargetFileName)"
+)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release SlaServDA|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>.;..\MemoryManager;..\shaders\dep\dxsdk_nov07\include\;..\scripts;LuaLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DAPLUGIN;_CRT_SECURE_NO_DEPRECATE;WIN32;NDEBUG;_WINDOWS;_USRDLL;SLASERV_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>General.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).$(Configuration).pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <WarningLevel>Level2</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>memorymanager.lib;shared.lib;scripts.lib;ws2_32.lib;Shlwapi.lib;lua51.lib;mime.lib;libluasocket.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+      <MapExports>false</MapExports>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <SetChecksum>true</SetChecksum>
+      <BaseAddress>0x11000000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>..\bin\release SSGM;..\bin\release</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if defined RenPath (
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenPath%\$(TargetFileName)" "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+if defined RenServerPath (
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+move "%RenServerPath%\$(TargetFileName)" "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+del "%RenServerPath%\$(TargetFileName).removeme" 1&gt;NUL 2&gt;NUL
+)
+
+verify &gt;NUL
+
+if defined RenPath (
+copy "$(TargetPath)" "%RenPath%\$(TargetFileName)"
+)
+if defined RenServerPath (
+copy "$(TargetPath)" "%RenServerPath%\$(TargetFileName)"
+)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

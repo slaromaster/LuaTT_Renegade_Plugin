@@ -1,0 +1,19 @@
+image: alpine:latest
+
+build:
+  stage: build
+  
+  only: 
+    - "main"
+    - "master"
+
+  script:
+    - 'apk add lua5.1'
+    - 'lua SnippetGenerator.lua LuaFunctions.cpp LuaPlugins/.vscode/LuaFunctions.code-snippets'
+    - 'lua SnippetGenerator.lua LuaFunctionsDA.cpp LuaPlugins/.vscode/LuaFunctionsDA.code-snippets'
+
+
+
+  artifacts:
+     paths:
+       - 'LuaPlugins'

@@ -1,0 +1,13 @@
+image: alpine:latest
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build
+          script:
+            - apk add lua5.1
+            - lua SnippetGenerator.lua LuaFunctions.cpp LuaPlugins/.vscode/LuaFunctions.code-snippets
+            - lua SnippetGenerator.lua LuaFunctionsDA.cpp LuaPlugins/.vscode/LuaFunctionsDA.code-snippets
+          artifacts:
+            - LuaPlugins
