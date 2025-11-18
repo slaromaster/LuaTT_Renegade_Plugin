@@ -1,7 +1,7 @@
 #ifndef LUATT_INCLUDE__GENERAL_H
 #define LUATT_INCLUDE__GENERAL_H
 
-#define LUATT_BUILD "170224"
+#define LUATT_BUILD "171125"
 
 #include "Defines.h"
 #include "Standard.h"
