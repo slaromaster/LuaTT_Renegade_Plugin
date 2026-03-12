@@ -8,6 +8,7 @@ This file is part of the LuaTT
 #ifndef INCLUDE_DIALOG
 #define INCLUDE_DIALOG
 
+#include "General.h"
 #include "LuaLib\lua.hpp"
 #include "ScriptedControls.h"
 
@@ -716,13 +717,13 @@ class LuaHUDElementClass
 	static HUDElementClass *GetInstance(lua_State *L, int n)
 	{
 		luaL_checktype(L, n, LUA_TUSERDATA);
-		if (luaL_checkudata(L, n, "HUDLineElementClass") != nullptr)
+		if (lua_testudata(L, n, "HUDLineElementClass") != nullptr)
 			return LuaHUDLineElementClass::GetInstance(L, n);
-		if (luaL_checkudata(L, n, "HUDRectangleElementClass") != nullptr)
+		if (lua_testudata(L, n, "HUDRectangleElementClass") != nullptr)
 			return LuaHUDRectangleElementClass::GetInstance(L, n);
-		if (luaL_checkudata(L, n, "HUDOutlineElementClass") != nullptr)
+		if (lua_testudata(L, n, "HUDOutlineElementClass") != nullptr)
 			return LuaHUDOutlineElementClass::GetInstance(L, n);
-		if (luaL_checkudata(L, n, "HUDTextElementClass") != nullptr)
+		if (lua_testudata(L, n, "HUDTextElementClass") != nullptr)
 			return LuaHUDTextElementClass::GetInstance(L, n);
 
 		return nullptr;
