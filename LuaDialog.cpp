@@ -631,6 +631,7 @@ const luaL_Reg LuaScriptedDialogClass::methods[] = {
 	method(LuaScriptedDialogClass, Get_Client_ID),
 	method(LuaScriptedDialogClass, Is_Dirty),
 	method(LuaScriptedDialogClass, Set_Dirty),
+	method(LuaScriptedDialogClass, Focus_Control),
 	method(LuaScriptedDialogClass, Add_Control),
 	method(LuaScriptedDialogClass, Create_Control),
 	method(LuaScriptedDialogClass, Find_Control),
@@ -753,6 +754,21 @@ int LuaScriptedDialogClass::Add_Control(lua_State *L)
 		if (control != nullptr)
 		{
 			a->Add_Control(control);
+		}
+	}
+	return 0;
+}
+
+int LuaScriptedDialogClass::Focus_Control(lua_State* L)
+{
+	if (lua_gettop(L) < 2) return 0;
+	ScriptedDialogClass* a = GetInstance(L, 1);
+	if (a != nullptr)
+	{
+		ScriptedControlClass* control = LuaScriptedControlClass::GetInstance(L, 2);
+		if (control != nullptr)
+		{
+			a->Focus_Control(control);
 		}
 	}
 	return 0;

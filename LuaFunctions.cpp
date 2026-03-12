@@ -886,6 +886,7 @@ if (lua_gettop(L) < 1) return 0; \
 	return 1; \
 }
 
+LUA_IS_OBJ(Is_Attached_To_An_Object, obj->As_PhysicalGameObj() && obj->As_PhysicalGameObj()->Is_Attached_To_An_Object())
 LUA_IS_OBJ(Is_Harvester, Is_Harvester(obj))
 LUA_IS_OBJ(Is_Projectile, obj->As_PhysicalGameObj() && obj->As_PhysicalGameObj()->Peek_Physical_Object() && obj->As_PhysicalGameObj()->Peek_Physical_Object()->As_ProjectileClass())
 LUA_IS_OBJ(Is_TrackedVehicle, obj->As_PhysicalGameObj() && obj->As_PhysicalGameObj()->Peek_Physical_Object() && obj->As_PhysicalGameObj()->Peek_Physical_Object()->As_TrackedVehicleClass())
@@ -8962,6 +8963,66 @@ int Lua_Set_Sight_Arc(lua_State* L)
 	return 0;
 }
 
+
+
+int Lua_Get_Hide_Team_Battlefield_Information(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		BuildingGameObjDef* def = (BuildingGameObjDef*)Find_Definition(luaL_checknumber(L, 1));
+		if (def)
+		{
+			lua_pushboolean(L, def->HideTeamBattlefieldInformation);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
+int Lua_HideTeamBattlefieldInformation(lua_State* L)
+{
+	if (lua_gettop(L) == 2)
+	{
+		BuildingGameObjDef* def = (BuildingGameObjDef*)Find_Definition(luaL_checknumber(L, 1));
+		if (def)
+		{
+			def->HideTeamBattlefieldInformation = lua_tobooleanCPP(L, 2);
+		}
+	}
+	return 0;
+}
+
+int Lua_Trigger_Smooth_Skeleton_Width_Resize(lua_State* L)
+{
+	if (lua_gettop(L) == 3)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_SoldierGameObj())
+		{
+			float v = lua_tonumber(L, 2);
+			float b = lua_tonumber(L, 3);
+			obj->As_SoldierGameObj()->Trigger_Smooth_Skeleton_Width_Resize(v, b);
+		}
+	}
+	return 0;
+}
+
+int Lua_Trigger_Smooth_Skeleton_Height_Resize(lua_State* L)
+{
+	if (lua_gettop(L) == 3)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_SoldierGameObj())
+		{
+			float v = lua_tonumber(L, 2);
+			float b = lua_tonumber(L, 3);
+			obj->As_SoldierGameObj()->Trigger_Smooth_Skeleton_Height_Resize(v, b);
+		}
+	}
+	return 0;
+}
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9005,6 +9066,11 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Trigger_Smooth_Skeleton_Height_Resize)
+	REGFUNC(Trigger_Smooth_Skeleton_Width_Resize)
+	REGFUNC(HideTeamBattlefieldInformation)
+	REGFUNC(Get_Hide_Team_Battlefield_Information)
+	REGFUNC(Is_Attached_To_An_Object)
 	REGFUNC(Set_Sight_Arc)
 	REGFUNC(Get_Sight_Arc)
 	REGFUNC(Set_Sight_Range)

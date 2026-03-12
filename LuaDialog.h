@@ -284,6 +284,7 @@ class LuaScriptedDialogClass
 	static int Get_Control_Index(lua_State *L);
 	static int Remove_Control(lua_State *L);
 	static int Clear_Controls(lua_State *L);
+	static int Focus_Control(lua_State* L);
 
 	/* ScriptedPopupDialogClass */
 	static int Get_Orientation(lua_State *L);
