@@ -27,6 +27,7 @@ This file is part of the LuaTT
 #include "engine_player.h"
 #include "da_cratemanager.h"
 #include "da_game.h"
+#include "da_player.h"
 
 #include "engine_def.h"
 #include "engine_phys.h"
@@ -1318,6 +1319,19 @@ int LuaDA_Get_Game_Mode_Short_Name(lua_State* L)
 	return 1;
 }
 
+int LuaDA_Get_Access_Level(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* P = Find_Player(luaL_checknumber(L, 1));
+		if (P)
+		{
+			lua_pushnumber(L, P->Get_DA_Player()->Get_Access_Level());
+			return 1;
+		}
+	}
+	return 0;
+}
 
 
 
@@ -1325,6 +1339,7 @@ int LuaDA_Get_Game_Mode_Short_Name(lua_State* L)
 
 void AddFunctionsDA(lua_State* L)
 {
+	lua_register(L, "DA_Get_Access_Level", LuaDA_Get_Access_Level);
 	lua_register(L, "DA_Get_Game_Mode_Short_Name", LuaDA_Get_Game_Mode_Short_Name);
 	lua_register(L, "DA_Get_Game_Mode_Long_Name", LuaDA_Get_Game_Mode_Long_Name);
 	lua_register(L, "DA_CreateC4", LuaDA_CreateC4);
