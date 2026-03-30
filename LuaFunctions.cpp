@@ -9106,6 +9106,34 @@ int Lua_Intersects_Object(lua_State* L)
 	return 0;
 }
 
+int Lua_Is_Targetable(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_DamageableGameObj())
+		{
+			lua_pushboolean(L, obj->As_DamageableGameObj()->Is_Targetable());
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Is_Health_Bar_Displayed(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_DamageableGameObj())
+		{
+			lua_pushboolean(L, obj->As_DamageableGameObj()->Is_Health_Bar_Displayed());
+			return 1;
+		}
+	}
+	return 0;
+}
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9149,6 +9177,8 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Is_Health_Bar_Displayed)
+	REGFUNC(Is_Targetable)
 	REGFUNC(Get_Human_Sub_State)
 	REGFUNC(Set_Targeting)
 	REGFUNC(Get_Muzzle_Position)
