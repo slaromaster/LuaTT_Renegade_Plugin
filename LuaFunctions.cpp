@@ -9174,6 +9174,24 @@ int Lua_Decrement_Flood_Counter(lua_State* L)
 	return 0;
 }
 
+int Lua_Get_All_Simple_Objects(lua_State* L)
+{
+	lua_newtable(L);
+	int buildingTable = lua_gettop(L);
+	int index = 1;
+
+	for (SLNode<BaseGameObj>* node = GameObjManager::GameObjList.Head(); node; node = node->Next())
+	{
+		GameObject* o = (GameObject*)node->Data();
+		if (o->As_PhysicalGameObj() && o->As_PhysicalGameObj()->As_SimpleGameObj())
+		{
+			lua_pushnumber(L, Commands->Get_ID(o));
+			lua_rawseti(L, buildingTable, index++);
+		}
+	}
+	return 1;
+}
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9217,6 +9235,7 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Get_All_Simple_Objects)
 	REGFUNC(Increment_Flood_Counter)
 	REGFUNC(Decrement_Flood_Counter)
 	REGFUNC(Is_Flooding)
