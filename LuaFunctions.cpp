@@ -9134,6 +9134,46 @@ int Lua_Is_Health_Bar_Displayed(lua_State* L)
 	return 0;
 }
 
+int Lua_Is_Flooding(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* p = Find_Player(luaL_checknumber(L, 1));
+		if (p)
+		{
+			lua_pushboolean(L, p->Is_Flooding());
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Increment_Flood_Counter(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* p = Find_Player(luaL_checknumber(L, 1));
+		if (p)
+		{
+			p->Increment_Flood_Counter();
+		}
+	}
+	return 0;
+}
+
+int Lua_Decrement_Flood_Counter(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* p = Find_Player(luaL_checknumber(L, 1));
+		if (p)
+		{
+			p->Decrement_Flood_Counter();
+		}
+	}
+	return 0;
+}
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9177,6 +9217,9 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Increment_Flood_Counter)
+	REGFUNC(Decrement_Flood_Counter)
+	REGFUNC(Is_Flooding)
 	REGFUNC(Is_Health_Bar_Displayed)
 	REGFUNC(Is_Targetable)
 	REGFUNC(Get_Human_Sub_State)
