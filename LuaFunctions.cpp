@@ -9192,6 +9192,19 @@ int Lua_Get_All_Simple_Objects(lua_State* L)
 	return 1;
 }
 
+int Lua_Set_Can_Object_Die(lua_State* L)
+{
+	if (lua_gettop(L) == 2)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_DamageableGameObj() && obj->As_DamageableGameObj()->Get_Defense_Object())
+		{
+			obj->As_DamageableGameObj()->Get_Defense_Object()->Set_Can_Object_Die(lua_tobooleanCPP(L, 2));
+		}
+	}
+	return 0;
+}
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9235,6 +9248,7 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Set_Can_Object_Die)
 	REGFUNC(Get_All_Simple_Objects)
 	REGFUNC(Increment_Flood_Counter)
 	REGFUNC(Decrement_Flood_Counter)
