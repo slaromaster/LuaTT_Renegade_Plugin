@@ -9205,6 +9205,26 @@ int Lua_Set_Can_Object_Die(lua_State* L)
 	return 0;
 }
 
+
+int Lua_Get_Parent_Object(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_PhysicalGameObj())
+		{
+			GameObject* host = obj->As_PhysicalGameObj()->Get_Parent_Object();
+			if (host)
+			{
+				lua_pushnumber(L, host->Get_ID());
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9248,6 +9268,7 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Get_Parent_Object)
 	REGFUNC(Set_Can_Object_Die)
 	REGFUNC(Get_All_Simple_Objects)
 	REGFUNC(Increment_Flood_Counter)
