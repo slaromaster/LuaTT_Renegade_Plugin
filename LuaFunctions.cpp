@@ -9086,7 +9086,6 @@ int Lua_Intersects_Object(lua_State* L)
 		if (a == nullptr || b == nullptr) return 0;
 		Vector3 origin_point = Vector3(a->GetX(), a->GetY(), a->GetZ());
 		Vector3 direction = Vector3(b->GetX(), b->GetY(), b->GetZ());
-		Vector3 origin_point = Vector3(a->GetX(), a->GetY(), a->GetZ());
 
 		LUA_Vector3* b = LuaVector3::GetInstance(L, 2);
 		Vector3 direction = Vector3(b->GetX(), b->GetY(), b->GetZ());
