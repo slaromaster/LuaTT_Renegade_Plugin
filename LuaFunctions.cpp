@@ -2268,6 +2268,8 @@ int Lua_cPlayer(lua_State *L)
 		lua_setfield(L, -2, "Total_Time");
 		lua_pushnumber(L, p->Get_Vis_ID());
 		lua_setfield(L, -2, "Vis_ID");
+		lua_pushnumber(L, p->Fps);
+		lua_setfield(L, -2, "Fps");
 		return 1;
 	}
 	return 1;
@@ -9023,6 +9025,206 @@ int Lua_Trigger_Smooth_Skeleton_Height_Resize(lua_State* L)
 	return 0;
 }
 
+int Lua_Set_Targeting(lua_State* L)
+{
+	if (lua_gettop(L) == 3)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_SmartGameObj())
+		{
+			LUA_Vector3* a = LuaVector3::GetInstance(L, 2);
+			Vector3 pos = Vector3(a->X(), a->Y(), a->Z());
+			obj->As_SmartGameObj()->Set_Targeting(pos, lua_tobooleanCPP(L, 3));
+		}
+	}
+	return 0;
+}
+
+int Lua_Get_Human_Sub_State(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_SoldierGameObj())
+		{
+			HumanStateClass* State = obj->As_SoldierGameObj()->Get_Human_State();
+			if (State)
+			{
+				lua_pushinteger(L, State->Get_Sub_State());
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+int Lua_Get_Muzzle_Position(lua_State* L)
+{
+	if (lua_gettop(L) == 2)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_SmartGameObj())
+		{
+			Matrix3D mat = obj->As_SmartGameObj()->Get_Muzzle(luaL_checkinteger(L, 2));
+			Vector3 pos = mat.Get_Translation();
+			LUA_Vector3* a = new LUA_Vector3(pos.X, pos.Y, pos.Z);
+			lua_boxpointer(L, a);
+			luaL_getmetatable(L, "Vector3");
+			lua_setmetatable(L, -2);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Intersects_Object(lua_State* L)
+{
+	if (lua_gettop(L) == 4)
+	{
+		LUA_Vector3* a = LuaVector3::GetInstance(L, 1);
+		LUA_Vector3* b = LuaVector3::GetInstance(L, 2);
+		if (a == nullptr || b == nullptr) return 0;
+		Vector3 origin_point = Vector3(a->GetX(), a->GetY(), a->GetZ());
+		Vector3 direction = Vector3(b->GetX(), b->GetY(), b->GetZ());
+
+		float length = lua_tonumber(L, 3);
+
+		LineSegClass line(origin_point, direction, length);
+		CastResultStruct result;
+		result.ComputeContactPoint = true;
+		PhysRayCollisionTestClass raycast(line, &result, static_cast<Collision_Group_Type>(luaL_checkinteger(L, 4)) );
+		if (PhysicsSceneClass::Get_Instance()->Cast_Ray(raycast))
+		{
+			CombatPhysObserverClass* old_observer = (CombatPhysObserverClass*)raycast.CollidedPhysObj->Get_Observer();
+			if (old_observer && old_observer->As_DamageableGameObj())
+			{
+				lua_pushnumber(L, old_observer->As_DamageableGameObj()->Get_ID());
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+int Lua_Is_Targetable(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_DamageableGameObj())
+		{
+			lua_pushboolean(L, obj->As_DamageableGameObj()->Is_Targetable());
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Is_Health_Bar_Displayed(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_DamageableGameObj())
+		{
+			lua_pushboolean(L, obj->As_DamageableGameObj()->Is_Health_Bar_Displayed());
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Is_Flooding(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* p = Find_Player(luaL_checknumber(L, 1));
+		if (p)
+		{
+			lua_pushboolean(L, p->Is_Flooding());
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Increment_Flood_Counter(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* p = Find_Player(luaL_checknumber(L, 1));
+		if (p)
+		{
+			p->Increment_Flood_Counter();
+		}
+	}
+	return 0;
+}
+
+int Lua_Decrement_Flood_Counter(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		cPlayer* p = Find_Player(luaL_checknumber(L, 1));
+		if (p)
+		{
+			p->Decrement_Flood_Counter();
+		}
+	}
+	return 0;
+}
+
+int Lua_Get_All_Simple_Objects(lua_State* L)
+{
+	lua_newtable(L);
+	int buildingTable = lua_gettop(L);
+	int index = 1;
+
+	for (SLNode<BaseGameObj>* node = GameObjManager::GameObjList.Head(); node; node = node->Next())
+	{
+		GameObject* o = (GameObject*)node->Data();
+		if (o->As_PhysicalGameObj() && o->As_PhysicalGameObj()->As_SimpleGameObj())
+		{
+			lua_pushnumber(L, Commands->Get_ID(o));
+			lua_rawseti(L, buildingTable, index++);
+		}
+	}
+	return 1;
+}
+
+int Lua_Set_Can_Object_Die(lua_State* L)
+{
+	if (lua_gettop(L) == 2)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_DamageableGameObj() && obj->As_DamageableGameObj()->Get_Defense_Object())
+		{
+			obj->As_DamageableGameObj()->Get_Defense_Object()->Set_Can_Object_Die(lua_tobooleanCPP(L, 2));
+		}
+	}
+	return 0;
+}
+
+
+int Lua_Get_Parent_Object(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_PhysicalGameObj())
+		{
+			GameObject* host = obj->As_PhysicalGameObj()->Get_Parent_Object();
+			if (host)
+			{
+				lua_pushnumber(L, host->Get_ID());
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 #define REGFUNC(func) lua_register(L, #func, Lua_##func);
@@ -9066,6 +9268,18 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 */
+	REGFUNC(Get_Parent_Object)
+	REGFUNC(Set_Can_Object_Die)
+	REGFUNC(Get_All_Simple_Objects)
+	REGFUNC(Increment_Flood_Counter)
+	REGFUNC(Decrement_Flood_Counter)
+	REGFUNC(Is_Flooding)
+	REGFUNC(Is_Health_Bar_Displayed)
+	REGFUNC(Is_Targetable)
+	REGFUNC(Get_Human_Sub_State)
+	REGFUNC(Set_Targeting)
+	REGFUNC(Get_Muzzle_Position)
+	REGFUNC(Intersects_Object)
 	REGFUNC(Trigger_Smooth_Skeleton_Height_Resize)
 	REGFUNC(Trigger_Smooth_Skeleton_Width_Resize)
 	REGFUNC(HideTeamBattlefieldInformation)
