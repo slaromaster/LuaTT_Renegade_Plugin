@@ -326,16 +326,12 @@ int Lua_Get_Skin(lua_State *L)
 	return 1;
 }
 
-int Lua_Set_Skin(lua_State *L)
+int Lua_Set_Skin(lua_State* L)
 {
-	if (lua_gettop(L) == 1)
-	{
-		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
-		if (obj)
-		{
-			Set_Skin(obj, luaL_checkstring(L, 2));
-		}
-	}
+	if (lua_gettop(L) < 2) return 0;
+	GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+	if (!obj) return 0;
+	Set_Skin(obj, luaL_checkstring(L, 2));
 	return 1;
 }
 
