@@ -70,6 +70,24 @@ SCRIPTS_API const char *Get_Translated_Definition_Name_Ini(const char *preset);
 SCRIPTS_API const char *Get_Translated_Preset_Name_Ex(GameObject *obj);
 #endif
 
+namespace {
+	template<typename Tag, typename Tag::type M>
+	struct PrivateRob { friend typename Tag::type get(Tag) { return M; } };
+
+	struct Steal_InteriorMeshes {
+		typedef RefMultiListClass<StaticPhysClass> BuildingGameObj::* type;
+		friend type get(Steal_InteriorMeshes);
+	};
+	template struct PrivateRob<Steal_InteriorMeshes, &BuildingGameObj::InteriorMeshes>;
+
+	struct Steal_ExteriorMeshes {
+		typedef RefMultiListClass<StaticPhysClass> BuildingGameObj::* type;
+		friend type get(Steal_ExteriorMeshes);
+	};
+	template struct PrivateRob<Steal_ExteriorMeshes, &BuildingGameObj::ExteriorMeshes>;
+}
+
+
 class PhysicsSceneClassLua : public PhysicsSceneClass
 {
 public:
@@ -923,6 +941,7 @@ LUA_IS_OBJ(Is_Delete_Pending, obj->Is_Delete_Pending())
 LUA_IS_OBJ(Is_Immovable, obj->As_VehicleGameObj() && obj->As_VehicleGameObj()->Is_Immovable())
 LUA_IS_OBJ(Get_Stealth_Active, obj->As_SmartGameObj() && obj->As_SmartGameObj()->Get_Stealth_Active())
 LUA_IS_OBJ(Is_In_Elevator, obj->As_SoldierGameObj() && obj->As_SoldierGameObj()->Is_In_Elevator())
+LUA_IS_OBJ(Is_Soldier_Busy, obj->As_SoldierGameObj() && Is_Soldier_Busy(obj->As_SoldierGameObj()))
 
 #define LUA_IS_PHYS(name, check) int Lua_##name(lua_State *L)\
 {\
@@ -9224,6 +9243,100 @@ int Lua_Get_Parent_Object(lua_State* L)
 	return 0;
 }
 
+int Lua_Is_Rendered(lua_State* L)
+{
+	if (lua_gettop(L) == 1)
+	{
+		GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+		if (obj && obj->As_PhysicalGameObj())
+		{
+			lua_pushboolean(L, obj->As_PhysicalGameObj()->Peek_Model()->Is_Hidden() == 0);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int Lua_Get_Interior_Building_Meshes(lua_State* L)
+{
+	lua_newtable(L);
+	int meshTable = lua_gettop(L);
+	int index = 1;
+
+	GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+	if (obj && obj->As_BuildingGameObj())
+	{
+		BuildingGameObj* building = obj->As_BuildingGameObj();
+		auto& meshes = building->*get(Steal_InteriorMeshes{});
+
+		RefMultiListIterator<StaticPhysClass> iter(&meshes);
+		for (iter.First(); !iter.Is_Done(); iter.Next())
+		{
+			StaticPhysClass* mesh = iter.Peek_Obj();
+			if (!mesh) continue;
+			lua_pushnumber(L, mesh->Get_ID());
+			lua_rawseti(L, meshTable, index++);
+		}
+	}
+	return 1;
+}
+
+int Lua_Get_Exterior_Building_Meshes(lua_State* L)
+{
+	lua_newtable(L);
+	int meshTable = lua_gettop(L);
+	int index = 1;
+
+	GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+	if (obj && obj->As_BuildingGameObj())
+	{
+		BuildingGameObj* building = obj->As_BuildingGameObj();
+		auto& meshes = building->*get(Steal_ExteriorMeshes{});
+
+		RefMultiListIterator<StaticPhysClass> iter(&meshes);
+		for (iter.First(); !iter.Is_Done(); iter.Next())
+		{
+			StaticPhysClass* mesh = iter.Peek_Obj();
+			if (!mesh) continue;
+			lua_pushnumber(L, mesh->Get_ID());
+			lua_rawseti(L, meshTable, index++);
+		}
+	}
+	return 1;
+}
+
+int Lua_Has_Interior_Building_Meshes(lua_State* L)
+{
+	GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+	if (obj && obj->As_BuildingGameObj())
+	{
+		BuildingGameObj* building = obj->As_BuildingGameObj();
+		auto& meshes = building->*get(Steal_InteriorMeshes{});
+		lua_pushboolean(L, !meshes.Is_Empty());
+	}
+	else
+	{
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
+int Lua_Has_Exterior_Building_Meshes(lua_State* L)
+{
+	GameObject* obj = Commands->Find_Object(luaL_checkinteger(L, 1));
+	if (obj && obj->As_BuildingGameObj())
+	{
+		BuildingGameObj* building = obj->As_BuildingGameObj();
+		auto& meshes = building->*get(Steal_ExteriorMeshes{});
+		lua_pushboolean(L, !meshes.Is_Empty());
+	}
+	else
+	{
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
@@ -9243,7 +9356,6 @@ void AddFunctions(lua_State *L)
 	Say_Dynamic_Dialogue_Player
 	Say_Dynamic_Dialogue_Team
 	Find_Closest_Poly_Position
-	Is_Soldier_Busy
 	
 	Kill_Messages_Disabled
 	Set_Emot_Icon
@@ -9267,7 +9379,13 @@ void AddFunctions(lua_State *L)
 	void	(* Set_Objective_HUD_Info)( int id, float priority, const char * texture_name, int message_id );
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
-*/
+*/	
+	REGFUNC(Is_Soldier_Busy)
+	REGFUNC(Has_Interior_Building_Meshes)
+	REGFUNC(Has_Exterior_Building_Meshes)
+	REGFUNC(Get_Interior_Building_Meshes)
+	REGFUNC(Get_Exterior_Building_Meshes)
+	REGFUNC(Is_Rendered)
 	REGFUNC(Get_Parent_Object)
 	REGFUNC(Set_Can_Object_Die)
 	REGFUNC(Get_All_Simple_Objects)
