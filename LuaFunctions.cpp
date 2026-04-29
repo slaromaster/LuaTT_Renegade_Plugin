@@ -70,22 +70,17 @@ SCRIPTS_API const char *Get_Translated_Definition_Name_Ini(const char *preset);
 SCRIPTS_API const char *Get_Translated_Preset_Name_Ex(GameObject *obj);
 #endif
 
-namespace {
-	template<typename Tag, typename Tag::type M>
-	struct PrivateRob { friend typename Tag::type get(Tag) { return M; } };
 
-	struct Steal_InteriorMeshes {
-		typedef RefMultiListClass<StaticPhysClass> BuildingGameObj::* type;
-		friend type get(Steal_InteriorMeshes);
-	};
-	template struct PrivateRob<Steal_InteriorMeshes, &BuildingGameObj::InteriorMeshes>;
-
-	struct Steal_ExteriorMeshes {
-		typedef RefMultiListClass<StaticPhysClass> BuildingGameObj::* type;
-		friend type get(Steal_ExteriorMeshes);
-	};
-	template struct PrivateRob<Steal_ExteriorMeshes, &BuildingGameObj::ExteriorMeshes>;
-}
+template<typename Tag, typename Tag::type M>
+struct PrivateGetBuilding { friend typename Tag::type get(Tag) { return M; } };
+struct GetPrivate_IntBuildingGameObj {
+	typedef RefMultiListClass<StaticPhysClass> BuildingGameObj::* type;
+};
+struct GetPrivate_ExtBuildingGameObj {
+	typedef RefMultiListClass<StaticPhysClass> BuildingGameObj::* type;
+};
+template struct PrivateGetBuilding<GetPrivate_IntBuildingGameObj, &BuildingGameObj::InteriorMeshes>;
+template struct PrivateGetBuilding<GetPrivate_ExtBuildingGameObj, &BuildingGameObj::ExteriorMeshes>;
 
 
 class PhysicsSceneClassLua : public PhysicsSceneClass
@@ -9267,7 +9262,7 @@ int Lua_Get_Interior_Building_Meshes(lua_State* L)
 	if (obj && obj->As_BuildingGameObj())
 	{
 		BuildingGameObj* building = obj->As_BuildingGameObj();
-		auto& meshes = building->*get(Steal_InteriorMeshes{});
+		auto& meshes = building->*get(GetPrivate_IntBuildingGameObj{});
 
 		RefMultiListIterator<StaticPhysClass> iter(&meshes);
 		for (iter.First(); !iter.Is_Done(); iter.Next())
@@ -9291,7 +9286,7 @@ int Lua_Get_Exterior_Building_Meshes(lua_State* L)
 	if (obj && obj->As_BuildingGameObj())
 	{
 		BuildingGameObj* building = obj->As_BuildingGameObj();
-		auto& meshes = building->*get(Steal_ExteriorMeshes{});
+		auto& meshes = building->*get(GetPrivate_ExtBuildingGameObj{});
 
 		RefMultiListIterator<StaticPhysClass> iter(&meshes);
 		for (iter.First(); !iter.Is_Done(); iter.Next())
@@ -9311,7 +9306,7 @@ int Lua_Has_Interior_Building_Meshes(lua_State* L)
 	if (obj && obj->As_BuildingGameObj())
 	{
 		BuildingGameObj* building = obj->As_BuildingGameObj();
-		auto& meshes = building->*get(Steal_InteriorMeshes{});
+		auto& meshes = building->*get(GetPrivate_IntBuildingGameObj{});
 		lua_pushboolean(L, !meshes.Is_Empty());
 	}
 	else
@@ -9327,7 +9322,7 @@ int Lua_Has_Exterior_Building_Meshes(lua_State* L)
 	if (obj && obj->As_BuildingGameObj())
 	{
 		BuildingGameObj* building = obj->As_BuildingGameObj();
-		auto& meshes = building->*get(Steal_ExteriorMeshes{});
+		auto& meshes = building->*get(GetPrivate_ExtBuildingGameObj{});
 		lua_pushboolean(L, !meshes.Is_Empty());
 	}
 	else
