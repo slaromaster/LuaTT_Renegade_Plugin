@@ -68,11 +68,11 @@ __declspec(dllexport) void* HookupStock(void* a, void* b, void* c, void* patch_s
 
 RENEGADE_FUNCTION
 ConversationClass *ConversationControl::Find_Conversation(int ConversationID)
-RENEGADESTOCK(0x006D6C90,0x006D6530);
+RENEGADESTOCK(0,0x00556160);
 
 RENEGADE_FUNCTION
 ConversationClass *ConversationControl::Find_Conversation(const char *Conversation_Name)
-RENEGADESTOCK(0x006D6C90,0x006D6530);
+RENEGADESTOCK(0,0x00556100);
 
 
 void AI_Dialogue_Script::Created(GameObject *obj)

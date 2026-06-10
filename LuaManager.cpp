@@ -1271,16 +1271,16 @@ void LuaManager::CallInvoke(const char *Function, const char *Arg)
 
 void LuaManager::Load()
 {
-	int Loc = (int)main_loop_glue - 0x0043BAC8 - 5;
+	int Loc = (int)main_loop_glue - 0x0043DFA8 - 5;
 	char h[5];
 	*h = '\xE9';
 	memcpy((void *)(h + 1), (void *)&Loc, 4);
 
 	unsigned long op;
 	void *p = OpenProcess(PROCESS_ALL_ACCESS, 0, GetCurrentProcessId());
-	VirtualProtectEx(p, (void *)0x0043BAC8, 5, PAGE_EXECUTE_READWRITE, &op);
-	WriteProcessMemory(p, (void *)0x0043BAC8, h, 5, NULL);
-	VirtualProtectEx(p, (void *)0x0043BAC8, 5, op, NULL);
+	VirtualProtectEx(p, (void *)0x0043DFA8, 5, PAGE_EXECUTE_READWRITE, &op);
+	WriteProcessMemory(p, (void *)0x0043DFA8, h, 5, NULL);
+	VirtualProtectEx(p, (void *)0x0043DFA8, 5, op, NULL);
 
 #ifndef LUATT_EXPORTS
 	LoadLua();
