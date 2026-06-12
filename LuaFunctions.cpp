@@ -42,7 +42,7 @@ This file is part of the LuaTT
 #else
 #include "SpawnerClass.h"
 #include "SpawnerDefClass.h"
-REF_DEF2(DynamicVectorClass<SpawnerClass*>, SpawnerList, 0, 0x008564A8);
+REF_DEF2(DynamicVectorClass<SpawnerClass*>, SpawnerList, 0, 0x00857D28);
 #include "da_vehicle.h"
 #include "da_game.h"
 #include "da_log.h"
